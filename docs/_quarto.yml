@@ -6,6 +6,7 @@ license: GPLv3
 
 website:
   page-navigation: true
+  favicon: assets/logo.png
   navbar:
     logo: assets/logo.png
     left:
