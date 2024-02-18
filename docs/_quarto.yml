@@ -1,0 +1,14 @@
+project:
+  type: website
+  output-dir: _site
+
+license: GPLv3
+
+quartodoc:
+  # the name used to import the package you want to create reference docs for
+  package: aligned_textgrid
+  style: pkgdown
+  dir: reference
+  # write sidebar data to this file
+  sidebar: "reference/_sidebar.yml"
+  parser: google
