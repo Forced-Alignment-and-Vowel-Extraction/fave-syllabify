@@ -1,0 +1,58 @@
+[
+  {
+    "objectID": "reference/syllabify.html",
+    "href": "reference/syllabify.html",
+    "title": "syllabify",
+    "section": "",
+    "text": "syllabify\n\n\n\n\n\nName\nDescription\n\n\n\n\nsyllabify_tg\nSyllabify an entire AlignedTextGrid\n\n\nsyllabify_word\nSyllabify a single word\n\n\n\n\n\nsyllabify.syllabify_tg(tg)\nSyllabify an entire AlignedTextGrid Args: tg (AlignedTextGrid): The textgrid to syllabify\n\n\n\nsyllabify.syllabify_word(word)\nSyllabify a single word\n\n\n\n\n\n\n\n\n\n\n\nName\nType\nDescription\nDefault\n\n\n\n\nword\naligned_textgrid.SequenceInterval\nThe word Sequence Interval to syllabify\nrequired",
+    "crumbs": [
+      "Reference",
+      "syllabify"
+    ]
+  },
+  {
+    "objectID": "reference/syllabify.html#functions",
+    "href": "reference/syllabify.html#functions",
+    "title": "syllabify",
+    "section": "",
+    "text": "Name\nDescription\n\n\n\n\nsyllabify_tg\nSyllabify an entire AlignedTextGrid\n\n\nsyllabify_word\nSyllabify a single word\n\n\n\n\n\nsyllabify.syllabify_tg(tg)\nSyllabify an entire AlignedTextGrid Args: tg (AlignedTextGrid): The textgrid to syllabify\n\n\n\nsyllabify.syllabify_word(word)\nSyllabify a single word\n\n\n\n\n\n\n\n\n\n\n\nName\nType\nDescription\nDefault\n\n\n\n\nword\naligned_textgrid.SequenceInterval\nThe word Sequence Interval to syllabify\nrequired",
+    "crumbs": [
+      "Reference",
+      "syllabify"
+    ]
+  },
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "Save Syllabify",
+    "section": "",
+    "text": "This is a work in progeess"
+  },
+  {
+    "objectID": "index.html#usage",
+    "href": "index.html#usage",
+    "title": "Save Syllabify",
+    "section": "Usage",
+    "text": "Usage\n\nfrom aligned_textgrid import AlignedTextGrid, custom_classes\nfrom fave_syllabify.syllabify import syllabify_tg\n\n\ntg = AlignedTextGrid(\n    textgrid_path = \"data/josef-fruehwald_speaker.TextGrid\",\n    entry_classes = custom_classes([\"Word\", \"Phone\"])\n)\n\ntg\n\nAlignedTextGrid with 1 groups named ['group_0'] each with [2] tiers. [['Word', 'Phone']]\n\n\n\nsyllabify_tg(tg)\n\ntg\n\nAlignedTextGrid with 1 groups named ['group_0'] each with [4] tiers. [['Word', 'Syllable', 'SylPart', 'Phone']]\n\n\n\nbeyond = [\n    w \n    for w in tg.group_0.Word \n    if w.label == \"beyond\"\n    ][0]\n\n\nbeyond.sub_labels\n\n['syl-2', 'syl-1']\n\n\n\nbeyond.last.sub_labels\n\n['nucleus', 'coda']\n\n\n\nbeyond.last.last.sub_labels\n\n['N', 'D']"
+  },
+  {
+    "objectID": "reference/index.html",
+    "href": "reference/index.html",
+    "title": "Function reference",
+    "section": "",
+    "text": "syllabify",
+    "crumbs": [
+      "Function reference"
+    ]
+  },
+  {
+    "objectID": "reference/index.html#reference",
+    "href": "reference/index.html#reference",
+    "title": "Function reference",
+    "section": "",
+    "text": "syllabify",
+    "crumbs": [
+      "Function reference"
+    ]
+  }
+]
