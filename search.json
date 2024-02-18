@@ -26,7 +26,14 @@
     "href": "index.html",
     "title": "Save Syllabify",
     "section": "",
-    "text": "This is a work in progeess"
+    "text": "This is a work in progress."
+  },
+  {
+    "objectID": "index.html#installation",
+    "href": "index.html#installation",
+    "title": "Save Syllabify",
+    "section": "Installation",
+    "text": "Installation\npip install git+ssh://git@github.com:Forced-Alignment-and-Vowel-Extraction/fave-syllabify.git"
   },
   {
     "objectID": "index.html#usage",
