@@ -6,7 +6,13 @@ title: Save Syllabify
 
 ![](https://img.shields.io/badge/%E2%9A%A0%EF%B8%8F-work_in_progress-red)
 
-This is a work in progeess
+This is a work in progress.
+
+## Installation
+
+```bash
+pip install git+ssh://git@github.com:Forced-Alignment-and-Vowel-Extraction/fave-syllabify.git
+```
 
 ## Usage
 
