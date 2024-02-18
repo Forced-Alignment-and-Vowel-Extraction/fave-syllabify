@@ -24,21 +24,21 @@
   {
     "objectID": "index.html",
     "href": "index.html",
-    "title": "Save Syllabify",
+    "title": "Fave Syllabify",
     "section": "",
     "text": "This is a work in progress."
   },
   {
     "objectID": "index.html#installation",
     "href": "index.html#installation",
-    "title": "Save Syllabify",
+    "title": "Fave Syllabify",
     "section": "Installation",
     "text": "Installation\npip install git+ssh://git@github.com:Forced-Alignment-and-Vowel-Extraction/fave-syllabify.git"
   },
   {
     "objectID": "index.html#usage",
     "href": "index.html#usage",
-    "title": "Save Syllabify",
+    "title": "Fave Syllabify",
     "section": "Usage",
     "text": "Usage\n\nfrom aligned_textgrid import AlignedTextGrid, custom_classes\nfrom fave_syllabify.syllabify import syllabify_tg\n\n\ntg = AlignedTextGrid(\n    textgrid_path = \"data/josef-fruehwald_speaker.TextGrid\",\n    entry_classes = custom_classes([\"Word\", \"Phone\"])\n)\n\ntg\n\nAlignedTextGrid with 1 groups named ['group_0'] each with [2] tiers. [['Word', 'Phone']]\n\n\n\nsyllabify_tg(tg)\n\ntg\n\nAlignedTextGrid with 1 groups named ['group_0'] each with [4] tiers. [['Word', 'Syllable', 'SylPart', 'Phone']]\n\n\n\nbeyond = [\n    w \n    for w in tg.group_0.Word \n    if w.label == \"beyond\"\n    ][0]\n\n\nbeyond.sub_labels\n\n['syl-2', 'syl-1']\n\n\n\nbeyond.last.sub_labels\n\n['nucleus', 'coda']\n\n\n\nbeyond.last.last.sub_labels\n\n['N', 'D']"
   },
