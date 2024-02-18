@@ -4,11 +4,36 @@ project:
 
 license: GPLv3
 
+website:
+  page-navigation: true
+  navbar:
+    logo: assets/logo.png
+    left:
+      - file: index.qmd
+        text: Get Started
+      - href: reference/
+        text: Reference
+
+format:
+  html: 
+    theme:
+      light: flatly
+      dark: darkly
+    toc: true
+
+# tell quarto to read the generated sidebar
+metadata-files:
+  - reference/_sidebar.yml
+
 quartodoc:
   # the name used to import the package you want to create reference docs for
-  package: aligned_textgrid
+  package: fave_syllabify
   style: pkgdown
   dir: reference
   # write sidebar data to this file
   sidebar: "reference/_sidebar.yml"
   parser: google
+  sections:
+    - title: Reference
+      contents:
+        - syllabify

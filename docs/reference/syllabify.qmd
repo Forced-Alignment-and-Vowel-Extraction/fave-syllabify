@@ -1,0 +1,32 @@
+# syllabify { #fave_syllabify.syllabify }
+
+`syllabify`
+
+
+
+## Functions
+
+| Name | Description |
+| --- | --- |
+| [syllabify_tg](#fave_syllabify.syllabify.syllabify_tg) | Syllabify an entire AlignedTextGrid |
+| [syllabify_word](#fave_syllabify.syllabify.syllabify_word) | Syllabify a single word |
+
+### syllabify_tg { #fave_syllabify.syllabify.syllabify_tg }
+
+`syllabify.syllabify_tg(tg)`
+
+Syllabify an entire AlignedTextGrid
+Args:
+    tg (AlignedTextGrid): The textgrid to syllabify
+
+### syllabify_word { #fave_syllabify.syllabify.syllabify_word }
+
+`syllabify.syllabify_word(word)`
+
+Syllabify a single word
+
+#### Parameters
+
+| Name   | Type                              | Description                             | Default    |
+|--------|-----------------------------------|-----------------------------------------|------------|
+| `word` | aligned_textgrid.SequenceInterval | The word Sequence Interval to syllabify | _required_ |

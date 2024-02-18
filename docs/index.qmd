@@ -1,0 +1,59 @@
+---
+title: Save Syllabify
+---
+
+
+
+![](https://img.shields.io/badge/%E2%9A%A0%EF%B8%8F-work_in_progress-red)
+
+This is a work in progress.
+
+## Installation
+
+```bash
+pip install git+ssh://git@github.com:Forced-Alignment-and-Vowel-Extraction/fave-syllabify.git
+```
+
+## Usage
+
+```{python}
+from aligned_textgrid import AlignedTextGrid, custom_classes
+from fave_syllabify.syllabify import syllabify_tg
+```
+
+```{python}
+tg = AlignedTextGrid(
+    textgrid_path = "data/josef-fruehwald_speaker.TextGrid",
+    entry_classes = custom_classes(["Word", "Phone"])
+)
+
+tg
+```
+
+
+```{python}
+syllabify_tg(tg)
+
+tg
+```
+
+
+```{python}
+beyond = [
+    w 
+    for w in tg.group_0.Word 
+    if w.label == "beyond"
+    ][0]
+```
+
+```{python}
+beyond.sub_labels
+```
+
+```{python}
+beyond.last.sub_labels
+```
+
+```{python}
+beyond.last.last.sub_labels
+```
