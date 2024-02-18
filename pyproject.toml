@@ -1,0 +1,36 @@
+[tool.poetry]
+name = "fave-syllabify"
+version = "0.1.0"
+description = "Syllabify force-aligned textgrids"
+authors = ["JoFrhwld <JoFrhwld@gmail.com>"]
+license = "GPLv3"
+readme = "README.md"
+packages = [{include = "fave_syllabify", from = "src"}]
+
+[tool.poetry.dependencies]
+python = "^3.10"
+aligned-textgrid = "^0.6.0"
+
+[tool.poetry.group.dev.dependencies]
+jupyter = "^1.0.0"
+pytest-cov = "^4.1.0"
+
+[tool.poetry.group.docs.dependencies]
+quartodoc = "^0.7.2"
+jupyter = "^1.0.0"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
+
+[tool.pytest.ini_options]
+addopts = [
+    "--import-mode=importlib",
+    "--cov-config=.coveragerc",
+    "--cov"
+]
+filterwarnings =[
+    "ignore::UserWarning"
+]
+pythonpath = "src"
+testpaths = "tests"
