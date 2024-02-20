@@ -2,14 +2,14 @@
 
 [[package]]
 name = "aligned-textgrid"
-version = "0.6.0"
+version = "0.6.1"
 description = "Classes for defining sequential information from TextGrids"
 category = "main"
 optional = false
 python-versions = ">=3.10,<4.0"
 files = [
-    {file = "aligned_textgrid-0.6.0-py3-none-any.whl", hash = "sha256:0f969e9163fd5be6da1b8b4ca87f970a078b1eeb67eb3e0cc9fcafaa426c56f6"},
-    {file = "aligned_textgrid-0.6.0.tar.gz", hash = "sha256:e0d1056da08c3f7a3b5c4236a848d51e1df3f8bbaa18bab5df572478ec0a12b8"},
+    {file = "aligned_textgrid-0.6.1-py3-none-any.whl", hash = "sha256:4d5d2513c00bbc304c14bb9d1b46d565f0086e9f71ea9d49830a103c71e7e687"},
+    {file = "aligned_textgrid-0.6.1.tar.gz", hash = "sha256:3ba37b413c302e10711296ac0b1beca52906c9fb3bc29dbf8fbb3b1ca941377b"},
 ]
 
 [package.dependencies]
@@ -31,14 +31,14 @@ files = [
 
 [[package]]
 name = "anyio"
-version = "4.2.0"
+version = "4.3.0"
 description = "High level compatibility layer for multiple asynchronous event loop implementations"
 category = "dev"
 optional = false
 python-versions = ">=3.8"
 files = [
-    {file = "anyio-4.2.0-py3-none-any.whl", hash = "sha256:745843b39e829e108e518c489b31dc757de7d2131d53fac32bd8df268227bfee"},
-    {file = "anyio-4.2.0.tar.gz", hash = "sha256:e1875bb4b4e2de1669f4bc7869b6d3f54231cdced71605e6e64c9be77e3be50f"},
+    {file = "anyio-4.3.0-py3-none-any.whl", hash = "sha256:048e05d0f6caeed70d731f3db756d35dcc1f35747c8c403364a8332c630441b8"},
+    {file = "anyio-4.3.0.tar.gz", hash = "sha256:f75253795a87df48568485fd18cdd2a3fa5c4f7c5be8e5e36637733fce06fed6"},
 ]
 
 [package.dependencies]
@@ -147,7 +147,7 @@ test = ["dateparser (>=1.0.0,<2.0.0)", "pre-commit", "pytest", "pytest-cov", "py
 name = "asttokens"
 version = "2.4.1"
 description = "Annotate AST trees with source code positions"
-category = "dev"
+category = "main"
 optional = false
 python-versions = "*"
 files = [
@@ -468,7 +468,7 @@ colorama = {version = "*", markers = "platform_system == \"Windows\""}
 name = "colorama"
 version = "0.4.6"
 description = "Cross-platform colored terminal text."
-category = "dev"
+category = "main"
 optional = false
 python-versions = "!=3.0.*,!=3.1.*,!=3.2.*,!=3.3.*,!=3.4.*,!=3.5.*,!=3.6.*,>=2.7"
 files = [
@@ -637,7 +637,7 @@ test = ["pytest (>=6)"]
 name = "executing"
 version = "2.0.1"
 description = "Get the currently executing AST node of a frame, and other information"
-category = "dev"
+category = "main"
 optional = false
 python-versions = ">=3.5"
 files = [
@@ -748,6 +748,24 @@ brotli = ["brotli", "brotlicffi"]
 cli = ["click (>=8.0.0,<9.0.0)", "pygments (>=2.0.0,<3.0.0)", "rich (>=10,<14)"]
 http2 = ["h2 (>=3,<5)"]
 socks = ["socksio (>=1.0.0,<2.0.0)"]
+
+[[package]]
+name = "icecream"
+version = "2.1.3"
+description = "Never use print() to debug again; inspect variables, expressions, and program execution with a single, simple function call."
+category = "main"
+optional = false
+python-versions = "*"
+files = [
+    {file = "icecream-2.1.3-py2.py3-none-any.whl", hash = "sha256:757aec31ad4488b949bc4f499d18e6e5973c40cc4d4fc607229e78cfaec94c34"},
+    {file = "icecream-2.1.3.tar.gz", hash = "sha256:0aa4a7c3374ec36153a1d08f81e3080e83d8ac1eefd97d2f4fe9544e8f9b49de"},
+]
+
+[package.dependencies]
+asttokens = ">=2.0.1"
+colorama = ">=0.3.9"
+executing = ">=0.3.1"
+pygments = ">=2.2.0"
 
 [[package]]
 name = "idna"
@@ -957,14 +975,14 @@ i18n = ["Babel (>=2.7)"]
 
 [[package]]
 name = "json5"
-version = "0.9.14"
+version = "0.9.17"
 description = "A Python implementation of the JSON5 data format."
 category = "dev"
 optional = false
-python-versions = "*"
+python-versions = ">=3.8"
 files = [
-    {file = "json5-0.9.14-py2.py3-none-any.whl", hash = "sha256:740c7f1b9e584a468dbb2939d8d458db3427f2c93ae2139d05f47e453eae964f"},
-    {file = "json5-0.9.14.tar.gz", hash = "sha256:9ed66c3a6ca3510a976a9ef9b8c0787de24802724ab1860bc0153c7fdd589b02"},
+    {file = "json5-0.9.17-py2.py3-none-any.whl", hash = "sha256:f8ec1ecf985951d70f780f6f877c4baca6a47b6e61e02c4cd190138d10a7805a"},
+    {file = "json5-0.9.17.tar.gz", hash = "sha256:717d99d657fa71b7094877b1d921b1cce40ab444389f6d770302563bb7dfd9ae"},
 ]
 
 [package.extras]
@@ -1217,14 +1235,14 @@ test = ["jupyter-server (>=2.0.0)", "pytest (>=7.0)", "pytest-jupyter[server] (>
 
 [[package]]
 name = "jupyterlab"
-version = "4.1.1"
+version = "4.1.2"
 description = "JupyterLab computational environment"
 category = "dev"
 optional = false
 python-versions = ">=3.8"
 files = [
-    {file = "jupyterlab-4.1.1-py3-none-any.whl", hash = "sha256:fa3e8c18b804eac04e51ceebd9dd3dd396e08106816f0d09cc426799d7087632"},
-    {file = "jupyterlab-4.1.1.tar.gz", hash = "sha256:8acc9f561729d8f32c14c294c397917cddfeeb13a5d46f811979b71b4911a9fd"},
+    {file = "jupyterlab-4.1.2-py3-none-any.whl", hash = "sha256:aa88193f03cf4d3555f6712f04d74112b5eb85edd7d222c588c7603a26d33c5b"},
+    {file = "jupyterlab-4.1.2.tar.gz", hash = "sha256:5d6348b3ed4085181499f621b7dfb6eb0b1f57f3586857aadfc8e3bf4c4885f9"},
 ]
 
 [package.dependencies]
@@ -1457,14 +1475,14 @@ test = ["flaky", "ipykernel (>=6.19.3)", "ipython", "ipywidgets", "nbconvert (>=
 
 [[package]]
 name = "nbconvert"
-version = "7.16.0"
-description = "Converting Jupyter Notebooks"
+version = "7.16.1"
+description = "Converting Jupyter Notebooks (.ipynb files) to other formats.  Output formats include asciidoc, html, latex, markdown, pdf, py, rst, script.  nbconvert can be used both as a Python library (`import nbconvert`) or as a command line tool (invoked as `jupyter nbconvert ...`)."
 category = "dev"
 optional = false
 python-versions = ">=3.8"
 files = [
-    {file = "nbconvert-7.16.0-py3-none-any.whl", hash = "sha256:ad3dc865ea6e2768d31b7eb6c7ab3be014927216a5ece3ef276748dd809054c7"},
-    {file = "nbconvert-7.16.0.tar.gz", hash = "sha256:813e6553796362489ae572e39ba1bff978536192fb518e10826b0e8cadf03ec8"},
+    {file = "nbconvert-7.16.1-py3-none-any.whl", hash = "sha256:3188727dffadfdc9c6a1c7250729063d7bc78b355ad7aa023138afa030d1cd07"},
+    {file = "nbconvert-7.16.1.tar.gz", hash = "sha256:e79e6a074f49ba3ed29428ed86487bf51509d9aab613bd8522ac08f6d28fd7fd"},
 ]
 
 [package.dependencies]
@@ -2000,7 +2018,7 @@ typing-extensions = ">=4.6.0,<4.7.0 || >4.7.0"
 name = "pygments"
 version = "2.17.2"
 description = "Pygments is a syntax highlighting package written in Python."
-category = "dev"
+category = "main"
 optional = false
 python-versions = ">=3.7"
 files = [
@@ -2573,7 +2591,7 @@ win32 = ["pywin32"]
 name = "six"
 version = "1.16.0"
 description = "Python 2 and 3 compatibility utilities"
-category = "dev"
+category = "main"
 optional = false
 python-versions = ">=2.7, !=3.0.*, !=3.1.*, !=3.2.*"
 files = [
@@ -2950,4 +2968,4 @@ testing = ["big-O", "jaraco.functools", "jaraco.itertools", "more-itertools", "p
 [metadata]
 lock-version = "2.0"
 python-versions = "^3.10"
-content-hash = "a32a6f9d3dc860cd6b8c1e0abe74fbc60405fcb59c67667eacf7631b297e7502"
+content-hash = "86fc98150bc3cb90c6128f19dca1139b196eac48cc6e2753465c719e7b15327e"

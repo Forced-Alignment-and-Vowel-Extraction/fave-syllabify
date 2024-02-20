@@ -3,48 +3,44 @@ from aligned_textgrid import AlignedTextGrid, \
     SequenceInterval
 from syllabify import SLAX, VOWELS, O2, O3
 import re
+from icecream import ic
 
 O2.add(("HH", "W"))
-O2.add(("B", "Y"))
 
-def syllabify_word(word: SequenceInterval):
-    """Syllabify a single word
-
-    Args:
-        word (SequenceInterval): The word Sequence Interval to syllabify
-    """
-    parts = [x for p in word.contains for x in p.contains]
+def make_syllable_constituents(word: SequenceInterval):
+    parts = [p for p in word.contains]
     nuclei = [x for x in parts if re.match(r"[AEIOU]", x.label)]
 
     if len(nuclei) == 0:
         return
-
+    
     for n in nuclei:
         stress = re.findall(r"\d", n.contains[0].label)[0]
         n.set_feature("stress", stress)
         n.label = "nucleus"
-        n.within.label = f"syl-{n.stress}"
 
-        if n.within.prev.label != "#" and \
-           n.within.prev.label != "NG" and\
-           n.within.prev.last not in nuclei:
-            n.within.prev.last.label = "onset"
-            n.within.fuse_leftwards(label_fun=lambda x, y: y)
+        if n.prev.label == "Y" and \
+           "UW" in n.last.label:
+            if (n.prev.prev.label != "#") and \
+               n.prev.prev not in nuclei:
+                n.fuse_leftwards(label_fun = lambda x,y: y)
+
+        if n.prev.label != "#" and \
+           n.prev.label != "NG" and\
+           n.prev not in nuclei:
+            n.prev.label = "onset"
 
         if n.prev.label == "onset":
             maximized = False
             while not maximized:
                 current_onsets = n.prev.sub_labels
-                candidate_set = n.prev.within.prev
-                if candidate_set.label == "#":
+                candidate_segment = n.prev.prev
+                candidate_label = candidate_segment.label
+                if candidate_label == "#":
                     maximized = True
                     break
-                
-                candidate_segment = n.prev.within.prev.last
-                candidate_label = candidate_segment.label
 
                 if (candidate_label, current_onsets[0]) in O2:
-                    n.prev.within.fuse_leftwards(label_fun=lambda x, y: y)
                     n.prev.fuse_leftwards(label_fun=lambda x, y: y)
                 else:
                     maximized = True
@@ -52,36 +48,55 @@ def syllabify_word(word: SequenceInterval):
     for n in nuclei:
         cleanedup = False
         while not cleanedup:
-            if n.within.fol.label == "#":
+            if n.fol.label == "#":
                 cleanedup = True
                 break
-            if "syl" in n.within.fol.label:
+            if n.fol.label in ["onset", "nucleus"]:
                 cleanedup = True
                 break
-            n.within.fuse_rightwards(label_fun=lambda x,y: x)
-        
-        if n.fol.label != "#":
-            n.fol.label = "coda"
+            
+            if n.fol.label != "coda":
+                n.fol.label = "coda"
 
-            codaed = False
-            while not codaed:
-                if n.fol.fol.label == "#":
-                    codaed = True
-                    break
-                n.fol.fuse_rightwards(label_fun = lambda x, y: x)
+            if n.fol.fol.label == "#":
+                cleanedup = True
+                break
+            if n.fol.fol.label in ["onset", "nucleus"]:
+                cleanedup = True
+                break
+
+            n.fol.fuse_rightwards(label_fun = lambda x, y: x)
+
+
+def syllabify_word(word: SequenceInterval):
+    """Syllabify a single word
+
+    Args:
+        word (SequenceInterval): The word Sequence Interval to syllabify
+    """
+
+    constituents = [c for c in word]
+    nuclei = [c for c in constituents if c.label == "nucleus"]
+    
+    if len(nuclei) == 0:
+        return
+    
+    for n in nuclei:
+        stress = n.last.stress
+        n.label = f"syl-{stress}"
+
+        if n.prev.label == "onset":
+            n.fuse_leftwards(lambda x, y: y)
+        
+        if n.fol.label == "coda":
+            n.fuse_rightwards(lambda x,y: x)
+
 
 def syllabify_tg(tg: AlignedTextGrid):
     """Syllabify an entire AlignedTextGrid
     Args:
         tg (AlignedTextGrid): The textgrid to syllabify
-
     """
-
-    tg.interleave_class(
-        "Syllable",
-        below = "Word",
-        timing_from = "below"
-    )
 
     tg.interleave_class(
         "SylPart",
@@ -93,4 +108,14 @@ def syllabify_tg(tg: AlignedTextGrid):
     words = [seq for tier in word_tiers for seq in tier]
 
     for word in words:
+        make_syllable_constituents(word)
+    
+    tg.interleave_class(
+        "Syllable",
+        below = "Word",
+        timing_from = "below"
+    )
+
+    for word in words:
         syllabify_word(word)
+
