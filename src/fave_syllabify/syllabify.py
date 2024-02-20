@@ -75,6 +75,24 @@ def syllabify_word(word: SequenceInterval):
         word (SequenceInterval): The word Sequence Interval to syllabify
     """
 
+    tg_entry_classes = {c.__name__ for gr in word.intier.within.within.entry_classes for c in gr}
+    if "SylPart" not in tg_entry_classes:
+        word.intier.within.within.interleave_class(
+            "SylPart",
+            above = "Phone",
+            timing_from = "below"
+        )
+
+    make_syllable_constituents(word)
+
+    tg_entry_classes = {c.__name__ for gr in word.intier.within.within.entry_classes for c in gr}
+    if "Syllable" not in tg_entry_classes:
+        word.intier.within.within.interleave_class(
+            "Syllable",
+            below = "Word",
+            timing_from = "below"
+        )
+
     constituents = [c for c in word]
     nuclei = [c for c in constituents if c.label == "nucleus"]
     
