@@ -1,13 +1,81 @@
 from aligned_textgrid import AlignedTextGrid, \
-    custom_classes,\
     SequenceInterval
-from syllabify import SLAX, VOWELS, O2, O3
+from syllabify import O2
 import re
-from icecream import ic
 
 O2.add(("HH", "W"))
 
+def build_nucleus(
+        nucleus: SequenceInterval,
+        nuclei: list[SequenceInterval]
+    ):
+    stress = re.findall(r"\d", nucleus.contains[0].label)[0]
+    nucleus.set_feature("stress", stress)
+    nucleus.label = "nucleus"
+
+    if not (nucleus.prev.label == "Y" and \
+            "UW" in nucleus.last.label):
+        return
+
+    if (nucleus.prev.prev.label != "#") and \
+        nucleus.prev.prev not in nuclei:
+        nucleus.fuse_leftwards(label_fun = lambda x,y: y)
+
+def build_onset(nucleus):
+    if nucleus.prev.label == "#" or \
+       nucleus.prev.label == "NG" or \
+       nucleus.prev.label == "nucleus":
+        return
+    
+    nucleus.prev.label = "onset"
+
+    maximized = False
+    while not maximized:
+        current_onsets = nucleus.prev.sub_labels
+        candidate_segment = nucleus.prev.prev
+        candidate_label = candidate_segment.label
+
+        if candidate_label == "#":
+            maximized = True
+            return
+
+        if not (candidate_label, current_onsets[0]) in O2:
+            maximized = True
+            return
+
+        nucleus.prev.fuse_leftwards(label_fun=lambda x, y: y)
+    
+def build_coda(nucleus):
+    cleanedup = False
+    while not cleanedup:
+        if nucleus.fol.label == "#":
+            cleanedup = True
+            return
+        
+        if nucleus.fol.label in ["onset", "nucleus"]:
+            cleanedup = True
+            return
+
+        nucleus.fol.label = "coda"
+
+        if nucleus.fol.fol.label == "#":
+            cleanedup = True
+            return
+        
+        if nucleus.fol.fol.label in ["onset", "nucleus"]:
+            cleanedup = True
+            return
+        
+        nucleus.fol.fuse_rightwards(label_fun = lambda x, y: x)    
+    
+
 def make_syllable_constituents(word: SequenceInterval):
+    """Make syllable constituents for a word interval
+
+    Args:
+        word (SequenceInterval): A SequenceInterval for a word.
+    """
+
     parts = [p for p in word.contains]
     nuclei = [x for x in parts if re.match(r"[AEIOU]", x.label)]
 
@@ -15,58 +83,13 @@ def make_syllable_constituents(word: SequenceInterval):
         return
     
     for n in nuclei:
-        stress = re.findall(r"\d", n.contains[0].label)[0]
-        n.set_feature("stress", stress)
-        n.label = "nucleus"
-
-        if n.prev.label == "Y" and \
-           "UW" in n.last.label:
-            if (n.prev.prev.label != "#") and \
-               n.prev.prev not in nuclei:
-                n.fuse_leftwards(label_fun = lambda x,y: y)
-
-        if n.prev.label != "#" and \
-           n.prev.label != "NG" and\
-           n.prev not in nuclei:
-            n.prev.label = "onset"
-
-        if n.prev.label == "onset":
-            maximized = False
-            while not maximized:
-                current_onsets = n.prev.sub_labels
-                candidate_segment = n.prev.prev
-                candidate_label = candidate_segment.label
-                if candidate_label == "#":
-                    maximized = True
-                    break
-
-                if (candidate_label, current_onsets[0]) in O2:
-                    n.prev.fuse_leftwards(label_fun=lambda x, y: y)
-                else:
-                    maximized = True
+        build_nucleus(n, nuclei)
 
     for n in nuclei:
-        cleanedup = False
-        while not cleanedup:
-            if n.fol.label == "#":
-                cleanedup = True
-                break
-            if n.fol.label in ["onset", "nucleus"]:
-                cleanedup = True
-                break
-            
-            if n.fol.label != "coda":
-                n.fol.label = "coda"
+        build_onset(n)
 
-            if n.fol.fol.label == "#":
-                cleanedup = True
-                break
-            if n.fol.fol.label in ["onset", "nucleus"]:
-                cleanedup = True
-                break
-
-            n.fol.fuse_rightwards(label_fun = lambda x, y: x)
-
+    for n in nuclei:
+        build_coda(n)
 
 def syllabify_word(word: SequenceInterval):
     """Syllabify a single word
