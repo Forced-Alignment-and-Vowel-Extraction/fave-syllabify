@@ -10,7 +10,7 @@ packages = [{include = "fave_syllabify", from = "src"}]
 [tool.poetry.dependencies]
 python = "^3.10"
 syllabify = {git = "git@github.com:Forced-Alignment-and-Vowel-Extraction/syllabify.git"}
-aligned-textgrid = "^0.6.2"
+aligned-textgrid = "^0.6.3"
 
 [tool.poetry.group.dev.dependencies]
 jupyter = "^1.0.0"

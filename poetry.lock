@@ -2,14 +2,14 @@
 
 [[package]]
 name = "aligned-textgrid"
-version = "0.6.2"
+version = "0.6.3"
 description = "Classes for defining sequential information from TextGrids"
 category = "main"
 optional = false
 python-versions = ">=3.10,<4.0"
 files = [
-    {file = "aligned_textgrid-0.6.2-py3-none-any.whl", hash = "sha256:82ac3bb011ccff0aaf0e2c8cec917d9ed41e2d1a399f3045cb1dfb83035bb440"},
-    {file = "aligned_textgrid-0.6.2.tar.gz", hash = "sha256:4879a31bc3ca08477533495b4799723bd41b175efbd161df0045b6a2b697c039"},
+    {file = "aligned_textgrid-0.6.3-py3-none-any.whl", hash = "sha256:882ab8969ee9900fabb95bc4ad643fc2ce811073038dce6035efc5771c17dbce"},
+    {file = "aligned_textgrid-0.6.3.tar.gz", hash = "sha256:8fffb61eeb2bbc745d5725b2e1ae9d4a4e3b243149a688b3344ed849fb7dcdf1"},
 ]
 
 [package.dependencies]
@@ -2950,4 +2950,4 @@ testing = ["big-O", "jaraco.functools", "jaraco.itertools", "more-itertools", "p
 [metadata]
 lock-version = "2.0"
 python-versions = "^3.10"
-content-hash = "b4479d4a1bd0f4127bf0002c5ee6f30ddfe92406b87cec3f4cfbfc03e5ac64db"
+content-hash = "f7480b7abaf617204854d97684980f7a933b686574ae9b2f95ecb42112664a6b"
