@@ -32,7 +32,7 @@ jobs:
         run: poetry install --no-interaction --no-root --with docs
       - name: Quardo Doc Build
         run: |
-            poetry run quartodoc build --config doc/_quarto.yml
+            poetry run quartodoc build --config docs/_quarto.yml
       - uses: quarto-dev/quarto-actions/setup@v2
       - name: Render and publish to gh pages
         run: |
