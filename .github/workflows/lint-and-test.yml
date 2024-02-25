@@ -56,3 +56,9 @@ jobs:
 
       - name: Run tests
         run: poetry run pytest
+
+      - name: Upload coverage reports to Codecov
+        uses: codecov/codecov-action@v4.0.1
+        with:
+          token: ${{ secrets.CODECOV_TOKEN }}
+          slug: Forced-Alignment-and-Vowel-Extraction/fave-syllabify
