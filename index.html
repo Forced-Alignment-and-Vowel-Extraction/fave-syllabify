@@ -184,11 +184,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </section>
 <section id="usage" class="level2">
 <h2 class="anchored" data-anchor-id="usage">Usage</h2>
-<div id="79ab1851" class="cell" data-execution_count="1">
+<div id="97e499d8" class="cell" data-execution_count="1">
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> aligned_textgrid <span class="im">import</span> AlignedTextGrid, custom_classes</span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> fave_syllabify.syllabify <span class="im">import</span> syllabify_tg</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div id="42d102aa" class="cell" data-execution_count="2">
+<div id="034998fe" class="cell" data-execution_count="2">
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>tg <span class="op">=</span> AlignedTextGrid(</span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>    textgrid_path <span class="op">=</span> <span class="st">"data/josef-fruehwald_speaker.TextGrid"</span>,</span>
 <span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>    entry_classes <span class="op">=</span> custom_classes([<span class="st">"Word"</span>, <span class="st">"Phone"</span>])</span>
@@ -199,7 +199,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <pre><code>AlignedTextGrid with 1 groups named ['group_0'] each with [2] tiers. [['Word', 'Phone']]</code></pre>
 </div>
 </div>
-<div id="540b63ce" class="cell" data-execution_count="3">
+<div id="c5ffd027" class="cell" data-execution_count="3">
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>syllabify_tg(tg)</span>
 <span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>tg</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -207,26 +207,26 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <pre><code>AlignedTextGrid with 1 groups named ['group_0'] each with [4] tiers. [['Word', 'Syllable', 'SylPart', 'Phone']]</code></pre>
 </div>
 </div>
-<div id="dfd214c9" class="cell" data-execution_count="4">
+<div id="255d6aa5" class="cell" data-execution_count="4">
 <div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>beyond <span class="op">=</span> [</span>
 <span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>    w </span>
 <span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> w <span class="kw">in</span> tg.group_0.Word </span>
 <span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> w.label <span class="op">==</span> <span class="st">"beyond"</span></span>
 <span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>    ][<span class="dv">0</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div id="f076b9df" class="cell" data-execution_count="5">
+<div id="daade669" class="cell" data-execution_count="5">
 <div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>beyond.sub_labels</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="5">
 <pre><code>['syl-2', 'syl-1']</code></pre>
 </div>
 </div>
-<div id="d4d7689d" class="cell" data-execution_count="6">
+<div id="3e9ccf3f" class="cell" data-execution_count="6">
 <div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>beyond.last.sub_labels</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="6">
 <pre><code>['nucleus', 'coda']</code></pre>
 </div>
 </div>
-<div id="aec8f1f3" class="cell" data-execution_count="7">
+<div id="311a5e1b" class="cell" data-execution_count="7">
 <div class="sourceCode cell-code" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>beyond.last.last.sub_labels</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="7">
 <pre><code>['N', 'D']</code></pre>
