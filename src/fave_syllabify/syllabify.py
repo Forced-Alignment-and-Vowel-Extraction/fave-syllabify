@@ -139,6 +139,10 @@ def syllabify_tg(tg: AlignedTextGrid):
         tg (AlignedTextGrid): The textgrid to syllabify
     """
 
+    for tgr in tg:
+        for p in tgr.Phone:
+            p.set_feature("old_id", p.id)
+
     tg.interleave_class(
         "SylPart",
         above = "Phone",
