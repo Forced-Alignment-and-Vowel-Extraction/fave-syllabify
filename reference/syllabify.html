@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.4.549">
+<meta name="generator" content="quarto-1.4.550">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -160,6 +160,7 @@ ul.task-list li input[type="checkbox"] {
   <ul class="collapse">
   <li><a href="#functions" id="toc-functions" class="nav-link" data-scroll-target="#functions">Functions</a>
   <ul class="collapse">
+  <li><a href="#fave_syllabify.syllabify.make_syllable_constituents" id="toc-fave_syllabify.syllabify.make_syllable_constituents" class="nav-link" data-scroll-target="#fave_syllabify.syllabify.make_syllable_constituents">make_syllable_constituents</a></li>
   <li><a href="#fave_syllabify.syllabify.syllabify_tg" id="toc-fave_syllabify.syllabify.syllabify_tg" class="nav-link" data-scroll-target="#fave_syllabify.syllabify.syllabify_tg">syllabify_tg</a></li>
   <li><a href="#fave_syllabify.syllabify.syllabify_word" id="toc-fave_syllabify.syllabify.syllabify_word" class="nav-link" data-scroll-target="#fave_syllabify.syllabify.syllabify_word">syllabify_word</a></li>
   </ul></li>
@@ -187,15 +188,51 @@ ul.task-list li input[type="checkbox"] {
 </thead>
 <tbody>
 <tr class="odd">
+<td><a href="#fave_syllabify.syllabify.make_syllable_constituents">make_syllable_constituents</a></td>
+<td>Make syllable constituents for a word interval</td>
+</tr>
+<tr class="even">
 <td><a href="#fave_syllabify.syllabify.syllabify_tg">syllabify_tg</a></td>
 <td>Syllabify an entire AlignedTextGrid</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td><a href="#fave_syllabify.syllabify.syllabify_word">syllabify_word</a></td>
 <td>Syllabify a single word</td>
 </tr>
 </tbody>
 </table>
+<section id="fave_syllabify.syllabify.make_syllable_constituents" class="level3">
+<h3 class="anchored" data-anchor-id="fave_syllabify.syllabify.make_syllable_constituents">make_syllable_constituents</h3>
+<p><code>syllabify.make_syllable_constituents(word)</code></p>
+<p>Make syllable constituents for a word interval</p>
+<section id="parameters" class="level4">
+<h4 class="anchored" data-anchor-id="parameters">Parameters</h4>
+<table class="table">
+<colgroup>
+<col style="width: 9%">
+<col style="width: 40%">
+<col style="width: 36%">
+<col style="width: 13%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+<th>Default</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>word</code></td>
+<td>aligned_textgrid.SequenceInterval</td>
+<td>A SequenceInterval for a word.</td>
+<td><em>required</em></td>
+</tr>
+</tbody>
+</table>
+</section>
+</section>
 <section id="fave_syllabify.syllabify.syllabify_tg" class="level3">
 <h3 class="anchored" data-anchor-id="fave_syllabify.syllabify.syllabify_tg">syllabify_tg</h3>
 <p><code>syllabify.syllabify_tg(tg)</code></p>
@@ -205,8 +242,8 @@ ul.task-list li input[type="checkbox"] {
 <h3 class="anchored" data-anchor-id="fave_syllabify.syllabify.syllabify_word">syllabify_word</h3>
 <p><code>syllabify.syllabify_word(word)</code></p>
 <p>Syllabify a single word</p>
-<section id="parameters" class="level4">
-<h4 class="anchored" data-anchor-id="parameters">Parameters</h4>
+<section id="parameters-1" class="level4">
+<h4 class="anchored" data-anchor-id="parameters-1">Parameters</h4>
 <table class="table">
 <colgroup>
 <col style="width: 8%">
@@ -772,7 +809,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="../reference/index.html" class="pagination-link  aria-label=" function="" reference"="">
+      <a href="../reference/index.html" class="pagination-link" aria-label="Function reference">
         <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Function reference</span>
       </a>          
   </div>
