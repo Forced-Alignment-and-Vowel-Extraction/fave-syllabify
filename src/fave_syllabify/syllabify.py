@@ -1,9 +1,15 @@
 from aligned_textgrid import AlignedTextGrid, \
     SequenceInterval
-from syllabify import O2
 import re
-
-O2.add(("HH", "W"))
+O2 = {('P', 'R'), ('T', 'R'), ('K', 'R'), ('B', 'R'), ('D', 'R'),
+      ('G', 'R'), ('F', 'R'), ('TH', 'R'),
+      ('P', 'L'), ('K', 'L'), ('B', 'L'), ('G', 'L'),
+      ('F', 'L'), ('S', 'L'),
+      ('K', 'W'), ('G', 'W'), ('S', 'W'),
+      ('S', 'P'), ('S', 'T'), ('S', 'K'),
+      ('HH', 'Y'), # "clerihew"
+      ('R', 'W'), ("HH", "W"),
+}
 
 def build_nucleus(
         nucleus: SequenceInterval,

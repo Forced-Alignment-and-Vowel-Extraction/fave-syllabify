@@ -2643,22 +2643,6 @@ pure-eval = "*"
 tests = ["cython", "littleutils", "pygments", "pytest", "typeguard"]
 
 [[package]]
-name = "syllabify"
-version = "0.1.0"
-description = ""
-category = "main"
-optional = false
-python-versions = "^3.10"
-files = []
-develop = false
-
-[package.source]
-type = "git"
-url = "git@github.com:Forced-Alignment-and-Vowel-Extraction/syllabify.git"
-reference = "HEAD"
-resolved_reference = "a4aa2f044fb8695969f23cb5e18f16fcfce95eac"
-
-[[package]]
 name = "tabulate"
 version = "0.9.0"
 description = "Pretty-print tabular data"
@@ -2950,4 +2934,4 @@ testing = ["big-O", "jaraco.functools", "jaraco.itertools", "more-itertools", "p
 [metadata]
 lock-version = "2.0"
 python-versions = "^3.10"
-content-hash = "f7480b7abaf617204854d97684980f7a933b686574ae9b2f95ecb42112664a6b"
+content-hash = "ace17416555d696421c428e0cd4476cb50d8177c44624e6c3f370ab4c5d09244"
