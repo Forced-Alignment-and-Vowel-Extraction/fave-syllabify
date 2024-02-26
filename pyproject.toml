@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "fave-syllabify"
-version = "0.1.1"
+version = "0.1.2"
 description = "Syllabify force-aligned textgrids"
 authors = ["JoFrhwld <JoFrhwld@gmail.com>"]
 license = "GPLv3"
