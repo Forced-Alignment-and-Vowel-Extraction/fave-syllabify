@@ -1,6 +1,7 @@
 from aligned_textgrid import AlignedTextGrid, \
     SequenceInterval
 import re
+from warnings import warn
 O2 = {('P', 'R'), ('T', 'R'), ('K', 'R'), ('B', 'R'), ('D', 'R'),
       ('G', 'R'), ('F', 'R'), ('TH', 'R'),
       ('P', 'L'), ('K', 'L'), ('B', 'L'), ('G', 'L'),
@@ -19,6 +20,12 @@ def build_nucleus(
     nucleus.set_feature("stress", stress)
     nucleus.label = "nucleus"
 
+    nucleus.set_feature("onset", None)
+    nucleus.set_feature("coda", None)
+
+    nucleus.last.set_feature("onset", None)
+    nucleus.last.set_feature("coda", None)
+
     if not (nucleus.prev.label == "Y" and \
             "UW" in nucleus.last.label):
         return
@@ -34,6 +41,10 @@ def build_onset(nucleus):
         return
     
     nucleus.prev.label = "onset"
+
+    nucleus.onset = nucleus.prev
+
+    nucleus.last.onset = nucleus.prev
 
     maximized = False
     while not maximized:
@@ -63,6 +74,9 @@ def build_coda(nucleus):
             return
 
         nucleus.fol.label = "coda"
+
+        nucleus.coda = nucleus.fol
+        nucleus.last.coda = nucleus.fol
 
         if nucleus.fol.fol.label == "#":
             cleanedup = True
@@ -131,11 +145,16 @@ def syllabify_word(word: SequenceInterval):
     for n in nuclei:
         stress = n.last.stress
         n.label = f"syl-{stress}"
+        n.set_feature("nucleus", n.last)
+        n.set_feature("onset", None)
+        n.set_feature("coda", None)
 
         if n.prev.label == "onset":
+            n.onset = n.prev.last
             n.fuse_leftwards(lambda x, y: y)
         
         if n.fol.label == "coda":
+            n.coda = n.fol.first
             n.fuse_rightwards(lambda x,y: x)
 
 
@@ -144,6 +163,17 @@ def syllabify_tg(tg: AlignedTextGrid):
     Args:
         tg (AlignedTextGrid): The textgrid to syllabify
     """
+
+    tg_entry_classes = {
+        c.__name__ 
+        for gr in tg.entry_classes 
+        for c in gr
+    }
+
+    if "Syllable" in tg_entry_classes or \
+       "SylPart" in tg_entry_classes:
+        warn(f"TextGrid with groups {[gr.name for gr in tg]} already syllabified.")
+        return
 
     for tgr in tg:
         for p in tgr.Phone:
