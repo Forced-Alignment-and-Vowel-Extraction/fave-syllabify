@@ -41,6 +41,13 @@
     "text": "Usage\nImport classes and functions\n\n\npython\n\nfrom aligned_textgrid import AlignedTextGrid, custom_classes\nfrom fave_syllabify import syllabify_tg\nfrom pathlib import Path\n\nRead in a textgrid\n\n\npython\n\ntg = AlignedTextGrid(\n    textgrid_path=Path(\n        \"data\",\n        \"josef-fruehwald_speaker.TextGrid\"\n    ),\n    entry_classes=custom_classes(\n        [\"Word\", \"Phone\"]\n    )\n)\n\nprint(tg)\n\nAlignedTextGrid with 1 groups named ['group_0'] each with [2] tiers. [['Word', 'Phone']]\n\n\nSyllabify the textgrid\n\n\npython\n\nsyllabify_tg(tg)\n\nprint(tg)\n\nAlignedTextGrid with 1 groups named ['group_0'] each with [4] tiers. [['Word', 'Syllable', 'SylPart', 'Phone']]\n\n\n\nExploring the syllabification\n\n\npython\n\nword_tier = tg.group_0.Word\nraindrops = word_tier[5]\n\nprint(raindrops.label)\n\nraindrops\n\n\nEach syllable is labelled with its stress.\n\n\npython\n\nprint([\n    syl.label \n    for syl in raindrops.contains\n])\n\n['syl-1', 'syl-2']\n\n\nEach syllable contains its constituent parts in a flat hierarchy (there’s no rhyme constituent).\n\n\npython\n\nsyl = raindrops.first.fol\nprint([\n    part.label\n    for part in syl.contains\n])\n\n['onset', 'nucleus', 'coda']\n\n\nEach constituent contains its relevant phone.\n\n\npython\n\nonset = syl.onset\nprint([\n    phone.label\n    for phone in onset\n])\n\n['D', 'R']"
   },
   {
+    "objectID": "index.html#quickly-syllabify-and-save-the-results",
+    "href": "index.html#quickly-syllabify-and-save-the-results",
+    "title": "Fave Syllabify",
+    "section": "Quickly syllabify and save the results",
+    "text": "Quickly syllabify and save the results\nTo quickly open, syllabify, and save the resulting textgrid (see also the aligned-textgrid docs)\n\n\npython\n\n# Get the relevant imports\nfrom aligned_textgrid import AlignedTextGrid, custom_classes\nfrom fave_syllabify import syllabify_tg\n\n# Load the Word and Phone aligned textgrid\ntg = AlignedTextGrid(\n    textgrid_path=\"data/josef-fruehwald_speaker.TextGrid\",\n    entry_classes=custom_classes(\n        [\"Word\", \"Phone\"]\n    )\n)\n\n# Syllabify (this modifies the tg object itself)\nsyllabify_tg(tg)\n\n# Save the result\ntg.save_textgrid(\n    save_path = \"data/syllabified.TextGrid\"\n)"
+  },
+  {
     "objectID": "reference/syllabify.html",
     "href": "reference/syllabify.html",
     "title": "syllabify",
