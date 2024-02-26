@@ -1,12 +1,13 @@
 # fave-syllabify
 
 
-![](https://img.shields.io/badge/Lifecycle-Maturing-lightgreen.png)
+![](https://img.shields.io/badge/Lifecycle-Maturing-lightgreen@2x.png)
 ![PyPI version](https://badge.fury.io/py/fave-syllabify.svg) [![Lint and
 Test](https://github.com/Forced-Alignment-and-Vowel-Extraction/fave-syllabify/actions/workflows/lint-and-test.yml/badge.svg)](https://github.com/Forced-Alignment-and-Vowel-Extraction/fave-syllabify/actions/workflows/lint-and-test.yml)
 [![Build
 Docs](https://github.com/Forced-Alignment-and-Vowel-Extraction/fave-syllabify/actions/workflows/build_docs.yml/badge.svg)](https://forced-alignment-and-vowel-extraction.github.io/fave-syllabify/)
 [![codecov](https://codecov.io/gh/Forced-Alignment-and-Vowel-Extraction/fave-syllabify/graph/badge.svg?token=WDBJ0O9P6L)](https://codecov.io/gh/Forced-Alignment-and-Vowel-Extraction/fave-syllabify)
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.10708119.svg)](https://doi.org/10.5281/zenodo.10708119)
 
 Syllabify a force-aligned TextGrid
 
