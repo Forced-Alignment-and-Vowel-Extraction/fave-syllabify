@@ -1,7 +1,6 @@
 project:
   type: website
   output-dir: _site
-
 license: GPLv3
 
 website:
@@ -13,14 +12,26 @@ website:
       - file: index.qmd
         text: Get Started
       - href: reference/
-        text: Reference
+        text: Module Reference
+    right:
+      - icon: github
+        href: https://github.com/Forced-Alignment-and-Vowel-Extraction/fave-syllabify
 
 format:
   html: 
     theme:
-      light: flatly
-      dark: darkly
+      light: 
+        - flatly
+        - styles/light.scss
+      dark: 
+        - darkly
+        - styles/dark.scss
     toc: true
+    css: styles/styles.css
+    date-modified: today
+
+execute: 
+  freeze: auto
 
 # tell quarto to read the generated sidebar
 metadata-files:
