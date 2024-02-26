@@ -88,3 +88,29 @@ print([
     for phone in onset
 ])
 ```
+
+## Quickly syllabify and save the results
+
+To quickly open, syllabify, and save the resulting textgrid (see also [the aligned-textgrid docs](https://forced-alignment-and-vowel-extraction.github.io/alignedTextGrid/usage/05_Outputs/00_to_textgrid.html))
+
+```{python}
+# Get the relevant imports
+from aligned_textgrid import AlignedTextGrid, custom_classes
+from fave_syllabify import syllabify_tg
+
+# Load the Word and Phone aligned textgrid
+tg = AlignedTextGrid(
+    textgrid_path="data/josef-fruehwald_speaker.TextGrid",
+    entry_classes=custom_classes(
+        ["Word", "Phone"]
+    )
+)
+
+# Syllabify (this modifies the tg object itself)
+syllabify_tg(tg)
+
+# Save the result
+tg.save_textgrid(
+    save_path = "data/syllabified.TextGrid"
+)
+```

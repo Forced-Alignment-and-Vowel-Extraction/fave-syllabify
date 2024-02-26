@@ -8,8 +8,21 @@
 
 | Name | Description |
 | --- | --- |
+| [make_syllable_constituents](#fave_syllabify.syllabify.make_syllable_constituents) | Make syllable constituents for a word interval |
 | [syllabify_tg](#fave_syllabify.syllabify.syllabify_tg) | Syllabify an entire AlignedTextGrid |
 | [syllabify_word](#fave_syllabify.syllabify.syllabify_word) | Syllabify a single word |
+
+### make_syllable_constituents { #fave_syllabify.syllabify.make_syllable_constituents }
+
+`syllabify.make_syllable_constituents(word)`
+
+Make syllable constituents for a word interval
+
+#### Parameters
+
+| Name   | Type                              | Description                    | Default    |
+|--------|-----------------------------------|--------------------------------|------------|
+| `word` | aligned_textgrid.SequenceInterval | A SequenceInterval for a word. | _required_ |
 
 ### syllabify_tg { #fave_syllabify.syllabify.syllabify_tg }
 

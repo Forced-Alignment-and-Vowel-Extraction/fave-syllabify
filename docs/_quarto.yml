@@ -42,6 +42,7 @@ quartodoc:
   package: fave_syllabify
   style: pkgdown
   dir: reference
+  version: 0.1.2
   # write sidebar data to this file
   sidebar: "reference/_sidebar.yml"
   parser: google
