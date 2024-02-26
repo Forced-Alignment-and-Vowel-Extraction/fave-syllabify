@@ -31,14 +31,14 @@
     "href": "index.html#installation",
     "title": "Fave Syllabify",
     "section": "Installation",
-    "text": "Installation\npip install git+ssh://git@github.com:Forced-Alignment-and-Vowel-Extraction/fave-syllabify.git"
+    "text": "Installation\n\nbash\n\npip install fave-syllabify"
   },
   {
     "objectID": "index.html#usage",
     "href": "index.html#usage",
     "title": "Fave Syllabify",
     "section": "Usage",
-    "text": "Usage\n\nfrom aligned_textgrid import AlignedTextGrid, custom_classes\nfrom fave_syllabify.syllabify import syllabify_tg\n\n\ntg = AlignedTextGrid(\n    textgrid_path = \"data/josef-fruehwald_speaker.TextGrid\",\n    entry_classes = custom_classes([\"Word\", \"Phone\"])\n)\n\ntg\n\nAlignedTextGrid with 1 groups named ['group_0'] each with [2] tiers. [['Word', 'Phone']]\n\n\n\nsyllabify_tg(tg)\n\ntg\n\nAlignedTextGrid with 1 groups named ['group_0'] each with [4] tiers. [['Word', 'Syllable', 'SylPart', 'Phone']]\n\n\n\nbeyond = [\n    w \n    for w in tg.group_0.Word \n    if w.label == \"beyond\"\n    ][0]\n\n\nbeyond.sub_labels\n\n['syl-2', 'syl-1']\n\n\n\nbeyond.last.sub_labels\n\n['nucleus', 'coda']\n\n\n\nbeyond.last.last.sub_labels\n\n['N', 'D']"
+    "text": "Usage\nImport classes and functions\n\n\npython\n\nfrom aligned_textgrid import AlignedTextGrid, custom_classes\nfrom fave_syllabify import syllabify_tg\nfrom pathlib import Path\n\nRead in a textgrid\n\n\npython\n\ntg = AlignedTextGrid(\n    textgrid_path=Path(\n        \"data\",\n        \"josef-fruehwald_speaker.TextGrid\"\n    ),\n    entry_classes=custom_classes(\n        [\"Word\", \"Phone\"]\n    )\n)\n\nprint(tg)\n\nAlignedTextGrid with 1 groups named ['group_0'] each with [2] tiers. [['Word', 'Phone']]\n\n\nSyllabify the textgrid\n\n\npython\n\nsyllabify_tg(tg)\n\nprint(tg)\n\nAlignedTextGrid with 1 groups named ['group_0'] each with [4] tiers. [['Word', 'Syllable', 'SylPart', 'Phone']]\n\n\n\nExploring the syllabification\n\n\npython\n\nword_tier = tg.group_0.Word\nraindrops = word_tier[5]\n\nprint(raindrops.label)\n\nraindrops\n\n\nEach syllable is labelled with its stress.\n\n\npython\n\nprint([\n    syl.label \n    for syl in raindrops.contains\n])\n\n['syl-1', 'syl-2']\n\n\nEach syllable contains its constituent parts in a flat hierarchy (there’s no rhyme constituent).\n\n\npython\n\nsyl = raindrops.first.fol\nprint([\n    part.label\n    for part in syl.contains\n])\n\n['onset', 'nucleus', 'coda']\n\n\nEach constituent contains its relevant phone.\n\n\npython\n\nonset = syl.onset\nprint([\n    phone.label\n    for phone in onset\n])\n\n['D', 'R']"
   },
   {
     "objectID": "reference/syllabify.html",
