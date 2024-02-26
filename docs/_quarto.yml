@@ -1,14 +1,52 @@
 project:
   type: website
   output-dir: _site
-
 license: GPLv3
+
+website:
+  page-navigation: true
+  favicon: assets/logo.png
+  navbar:
+    logo: assets/logo.png
+    left:
+      - file: index.qmd
+        text: Get Started
+      - href: reference/
+        text: Module Reference
+    right:
+      - icon: github
+        href: https://github.com/Forced-Alignment-and-Vowel-Extraction/fave-syllabify
+
+format:
+  html: 
+    theme:
+      light: 
+        - flatly
+        - styles/light.scss
+      dark: 
+        - darkly
+        - styles/dark.scss
+    toc: true
+    css: styles/styles.css
+    date-modified: today
+
+execute: 
+  freeze: auto
+
+# tell quarto to read the generated sidebar
+metadata-files:
+  - reference/_sidebar.yml
 
 quartodoc:
   # the name used to import the package you want to create reference docs for
-  package: aligned_textgrid
+  package: fave_syllabify
   style: pkgdown
   dir: reference
+  version: 0.1.2
   # write sidebar data to this file
   sidebar: "reference/_sidebar.yml"
   parser: google
+  sections:
+    - title: Reference
+      contents:
+        - syllabify

@@ -1,0 +1,7 @@
+# Function reference {.doc .doc-index}
+
+## Reference
+
+| | |
+| --- | --- |
+| [syllabify](syllabify.qmd#fave_syllabify.syllabify) |  |

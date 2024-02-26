@@ -1,0 +1,28 @@
+# This CITATION.cff file was generated with cffinit.
+# Visit https://bit.ly/cffinit to generate yours today!
+
+cff-version: 1.2.0
+title: fave-syllabify
+message: 'If you use this software, please cite it as below.'
+type: software
+authors:
+  - family-names: Fruehwald
+    given-names: Josef
+    orcid: 'https://orcid.org/0000-0001-8480-9461'
+identifiers:
+  - type: doi
+    value: 10.5281/zenodo.10708119
+repository-code: >-
+  https://github.com/Forced-Alignment-and-Vowel-Extraction/fave-syllabify
+url: >-
+  https://forced-alignment-and-vowel-extraction.github.io/fave-syllabify
+repository-artifact: 'https://zenodo.org/records/10708119'
+abstract: A python library to syllabify a force-aligned textgrid.
+keywords:
+  - linguistics
+  - computational linguistics
+  - phonetics
+license: GPL-3.0
+version: 0.1.2
+date-released: '2024-02-26'
+doi: 10.5281/zenodo.10708119
