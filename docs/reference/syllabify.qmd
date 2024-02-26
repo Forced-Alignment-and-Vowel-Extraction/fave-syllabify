@@ -29,8 +29,12 @@ Make syllable constituents for a word interval
 `syllabify.syllabify_tg(tg)`
 
 Syllabify an entire AlignedTextGrid
-Args:
-    tg (AlignedTextGrid): The textgrid to syllabify
+
+#### Parameters
+
+| Name   | Type                             | Description               | Default    |
+|--------|----------------------------------|---------------------------|------------|
+| `tg`   | aligned_textgrid.AlignedTextGrid | The textgrid to syllabify | _required_ |
 
 ### syllabify_word { #fave_syllabify.syllabify.syllabify_word }
 

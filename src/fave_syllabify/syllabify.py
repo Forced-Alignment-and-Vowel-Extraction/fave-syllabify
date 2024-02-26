@@ -160,6 +160,7 @@ def syllabify_word(word: SequenceInterval):
 
 def syllabify_tg(tg: AlignedTextGrid):
     """Syllabify an entire AlignedTextGrid
+    
     Args:
         tg (AlignedTextGrid): The textgrid to syllabify
     """
